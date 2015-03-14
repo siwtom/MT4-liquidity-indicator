@@ -1,0 +1,23 @@
+= Introduction =
+
+Some time ago in-house trading model was very popular in forex. But time is changed and currently ECN model is becoming increasingly popular. For in-house trading you need to know only the best prices: bid and ask, because your order can be executed fully by this price or fully rejected. For ECN model we need to know orders book (level2), because your order can be executed partially and price execution depends on liquidity in level2.
+
+Look at example: 
+
+|| *Bid Volume* || *Price* || *Ask Volume*|| 
+||              || 1.36716 ||  0.55       ||
+||              || 1.36700 ||  0.6        ||
+||              || 1.36696 ||  0.1        ||
+||              || 1.36628 ||  2.76       ||
+||              || 1.36610 ||  0.62       ||
+||  5           || 1.36418 ||             ||
+||  0.1         || 1.36231 ||             ||
+||  1.2         || 1.36220 ||             ||
+||  0.55        || 1.36179 ||             ||
+||  0.5         || 1.36111 ||             ||
+
+I you would like to buy 0.5 lot the price will be 1.36610. The same price will be for volumes interval from allowed minimum to 0.62 lots. But if you would like to buy 1.2 volume the executed price will be:
+ (1.36610 x 0.62 + 1.36628 x 0.58) / (0.62 + 0.58) = 1.36619
+This example shows that executed price depends on requested volume. All visible volume in level2 equals 4.63 for asks and 7.35 bids. If you request greater volume than visible in level2 it can be cause of partial execution or execution by unpredictable price.
+ 
+MT4 Liquidity Indicator gets level2 quotes in real time and calculates weight average bid and ask for custom volumes. This indicator help you to understand effective bid, ask and spread.

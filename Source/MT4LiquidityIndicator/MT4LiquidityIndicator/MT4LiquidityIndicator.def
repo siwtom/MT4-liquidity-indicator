@@ -1,0 +1,5 @@
+LIBRARY
+	EXPORTS
+		MT4LIInitialize
+		MT4LIStart
+		MT4LIStop

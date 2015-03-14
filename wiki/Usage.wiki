@@ -1,0 +1,51 @@
+=Starting of liquidity indicator=
+
+To use MT4 Liquidity Indicator start your MetaTrader 4 client, then select *Custom Indicators* in *Navigator* window and then drag the indicator to *chart* window.
+
+https://mt4-liquidity-indicator.googlecode.com/svn/wiki/Images/Usage_NavigatorAndChart.png
+
+In the dialog that appears, select *Common* tab, then select *Allow DLL imports* and then click *OK*.
+
+https://mt4-liquidity-indicator.googlecode.com/svn/wiki/Images/Usage_AllowDllImports.png
+
+Then you can see indicator window in lower pane of chart. 
+
+https://mt4-liquidity-indicator.googlecode.com/svn/wiki/Images/Usage_Chart.png
+
+Indicator windows displays all specified lines in options for different volumes. Also you can see price window grid, which contains the last weight average bid and ask for all lines and difference between calculated ask and bid in pips.
+
+
+=Options=
+
+https://mt4-liquidity-indicator.googlecode.com/svn/wiki/Images/Usage_Options.png
+
+Options dialog contains the following parameters:
+
+ # *Background color* allows to change background color color of this liquidity indicator. 
+ # *Duration* specifies time interval in seconds, which is used for displaying of liquidity.
+ # *Foreground color* allows to change color of axes and numbers.
+ # *Height* specifies height in pixels of liquidity indicator window.
+ # *Mode* allows to chose drawing mode:
+   * *Quality* enables [http://en.wikipedia.org/wiki/Spatial_anti-aliasing anti-aliasing]
+   * *Speed* disables [http://en.wikipedia.org/wiki/Spatial_anti-aliasing anti-aliasing]
+ # *Show grid* displays or hides chart's grid.
+ # *Type* specifies type of lines:
+   * *Straight* means only horizontal lines
+   * *Stepped* means only horizontal and vertical lines
+   * *Interpolation* means linear interpolation between the neighboring ticks
+ # *Update interval* specifies time interval in ms of redraw the graph.
+ # *Lines* option allows to manage lines collection.
+
+Use *Apply* button to apply new settings at this time only.
+
+Use *Save* button to apply and save new settings.
+
+Use *Cancel* button to restore settings.
+
+https://mt4-liquidity-indicator.googlecode.com/svn/wiki/Images/Usage_LineSettings.png
+
+Use *Add* and *Remove* buttons to manage number of lines. Every line has the following parameters:
+
+ # *Volume* specifies volume in lots for weight average price calculation.
+ # *Bid Color* specifies color of *Bid* line.
+ # *Ask Color* specifies color of *Ask* line.

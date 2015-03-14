@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D2F46E4-9924-4300-94D7-992B232DCBA5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MT4LiquidityIndicator.Net</RootNamespace>
+    <AssemblyName>MT4LiquidityIndicator.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SoftFX.Extended.Net">
+      <HintPath>..\External\dll\SoftFX.Extended.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChartBuilder.cs" />
+    <Compile Include="Core\Algorithm.cs" />
+    <Compile Include="Core\EnvironmentEx.cs" />
+    <Compile Include="Core\Graph.cs" />
+    <Compile Include="Core\GraphicsEx.cs" />
+    <Compile Include="Core\GraphPart.cs" />
+    <Compile Include="Core\MathEx.cs" />
+    <Compile Include="Core\Point2F.cs" />
+    <Compile Include="Core\QuoteEx.cs" />
+    <Compile Include="Core\Quotes.cs" />
+    <Compile Include="Core\RectF.cs" />
+    <Compile Include="Core\RenderingMode.cs" />
+    <Compile Include="Fdk\DataFeedImpl.cs" />
+    <Compile Include="Fdk\DataFeedProxy.cs" />
+    <Compile Include="Parameters.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ChartSettings.cs" />
+    <Compile Include="Settings\ChartSettingsManager.cs" />
+    <Compile Include="Settings\ColorSerializer.cs" />
+    <Compile Include="Settings\Configuration.cs" />
+    <Compile Include="Settings\LineSettings.cs" />
+    <Compile Include="Settings\LineType.cs" />
+    <Compile Include="Settings\Version0\ChartSettings0.cs" />
+    <Compile Include="Settings\Version0\LineSettings0.cs" />
+    <Compile Include="Settings\Version0\LineType0.cs" />
+    <Compile Include="Settings\Version0\Mode0.cs" />
+    <Compile Include="Settings\Version0\Settings0.cs" />
+    <Compile Include="View\Chart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Chart.Designer.cs">
+      <DependentUpon>Chart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChartSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChartSettingsDialog.Designer.cs">
+      <DependentUpon>ChartSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChartState.cs" />
+    <Compile Include="View\Prices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Prices.Designer.cs">
+      <DependentUpon>Prices.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="View\Chart.resx">
+      <DependentUpon>Chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChartSettingsDialog.resx">
+      <DependentUpon>ChartSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Prices.resx">
+      <DependentUpon>Prices.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MT4LiquidityIndicator", "MT4LiquidityIndicator\MT4LiquidityIndicator.vcxproj", "{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT4LiquidityIndicator.Net", "MT4LiquidityIndicator.Net\MT4LiquidityIndicator.Net.csproj", "{2D2F46E4-9924-4300-94D7-992B232DCBA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT4LiquidityIndicator.Launcher", "MT4LiquidityIndicator.Launcher\MT4LiquidityIndicator.Launcher.csproj", "{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MQL4", "MQL4", "{CF96F25C-590C-40C5-A267-7AEAAF92394E}"
+	ProjectSection(SolutionItems) = preProject
+		MQL4\MT4LiquidityIndicator.mq4 = MQL4\MT4LiquidityIndicator.mq4
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{9F81051F-30C7-4ABA-B63D-07E414021E29}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration\FXOpen.Crypto.MT4LiquidityIndicator.Net.dll.xml = Configuration\FXOpen.Crypto.MT4LiquidityIndicator.Net.dll.xml
+		Configuration\FXOpen.ECN.MT4LiquidityIndicator.Net.dll.xml = Configuration\FXOpen.ECN.MT4LiquidityIndicator.Net.dll.xml
+		Configuration\FXOpen.STP.MT4LiquidityIndicator.Net.dll.xml = Configuration\FXOpen.STP.MT4LiquidityIndicator.Net.dll.xml
+		Configuration\RVD.ECN.MT4LiquidityIndicator.Net.dll.xml = Configuration\RVD.ECN.MT4LiquidityIndicator.Net.dll.xml
+		Configuration\RVD.STP.MT4LiquidityIndicator.Net.dll.xml = Configuration\RVD.STP.MT4LiquidityIndicator.Net.dll.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Debug|Win32.Build.0 = Debug|Win32
+		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Release|Win32.ActiveCfg = Release|Win32
+		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Release|Win32.Build.0 = Release|Win32
+		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Debug|Win32.Build.0 = Debug|Any CPU
+		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Release|Win32.ActiveCfg = Release|Any CPU
+		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Release|Win32.Build.0 = Release|Any CPU
+		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Debug|Win32.Build.0 = Debug|Any CPU
+		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Release|Win32.ActiveCfg = Release|Any CPU
+		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Release|Win32.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+= Installation =
+
+To install MT4 Liquidity Indicator please download the latest version from my  
+[https://drive.google.com/folderview?id=0BwBMSNJd3y5MQ1E3TTF0ZTZPVjg&usp=sharing#list Google drive] and unpack to your MetaTrader\MQL4.
+
+Then copy configuration, which you would like, from MetaTrader\MQL4\Libraries\Configuration to MetaTrader\MQL4\Libraries and then rename it to MT4LiquidityIndicator.Net.dll.xml.

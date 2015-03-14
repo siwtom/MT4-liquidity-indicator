@@ -1,0 +1,25 @@
+= Configuration =
+
+MetaTrader 4 does not provide level2 access itself. To make liquidity indicator we should get full book quotes from another source. Current liquidity indicator implementation looks for a configuration file "MT4LiquidityIndicator.Net.dll.xml" in the same directory with MT4LiquidityIndicator.Net.dll. Configuration file has simple structure. This is standard connection parameters required by FDK:
+
+{{{
+  <?xml version="1.0" encoding="utf-8" ?> 
+<FixConnectionStringBuilder xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <FixVersion>FIX.4.4</FixVersion> 
+    <TradingPlatformAddress>hostname</TradingPlatformAddress> 
+    <TradingPlatformPort>5003</TradingPlatformPort> 
+    <SenderCompId /> 
+    <TargetCompId>EXECUTOR</TargetCompId> 
+    <Username>your username</Username> 
+    <Password>your password</Password> 
+    <SecureConnection>true</SecureConnection> 
+    <FixLogDirectory /> 
+    <DecodeLogFixMessages>true</DecodeLogFixMessages> 
+    <ProtocolVersion>ext.1.7</ProtocolVersion> 
+    <ExcludeMessagesFromLogs>W</ExcludeMessagesFromLogs> 
+</FixConnectionStringBuilder>
+}}}
+
+As I know only two brokers provides level2 access through FDK. These are "FXOpen" and "RWD Markets". I've discovered then installation of one click trading plugin of [http://www.fxopen.com/Download.aspx?name=OneClickTradingLevel2.exe FXOpen] and [https://www.rvdmarkets.com/ru/forex_trading_utilities#OneClick RWD] contains "DefaultSettings.SoftFX.OneClickTrading.NET.dll.xml". This file lists the trading server with credentials.
+
+I've extracted some credentials and you can find them in installation package of liquidity indicator.
