@@ -99,10 +99,10 @@
 			this.m_site.AutoSize = true;
 			this.m_site.Location = new System.Drawing.Point(16, 16);
 			this.m_site.Name = "m_site";
-			this.m_site.Size = new System.Drawing.Size(243, 13);
+			this.m_site.Size = new System.Drawing.Size(248, 13);
 			this.m_site.TabIndex = 3;
 			this.m_site.TabStop = true;
-			this.m_site.Text = "https://code.google.com/p/mt4-liquidity-indicator/";
+			this.m_site.Text = "https://github.com/marmysh/MT4-liquidity-indicator";
 			this.m_site.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLink);
 			// 
 			// Chart

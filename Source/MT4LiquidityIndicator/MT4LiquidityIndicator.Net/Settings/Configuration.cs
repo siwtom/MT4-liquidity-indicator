@@ -121,7 +121,7 @@ namespace MT4LiquidityIndicator.Net.Settings
 		#region properties
 		public Settings0 Settings0 { get; set; }
 		#endregion
-		#region saving
+		#region saving and loading
 		internal static void Save(string path, Configuration config)
 		{
 			CreateDirectoriesFromPath(path);
