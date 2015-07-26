@@ -22,30 +22,27 @@ namespace MT4LiquidityIndicator.Net.View
 
 			this.Text += chart.Parameters.Symbol;
 			m_chart = chart;
-			m_originalSettings = new ChartSettings(chart.Settings);
 			m_propertyGrid.SelectedObject = chart.Settings;
 			m_propertyGrid.PropertyValueChanged += OnChanged;
 		}
 
 
 		#region event handlers
-		protected override void WndProc(ref Message m)
-		{
-			if (WM_CHAR == m.Msg)
-			{
-			}
-			base.WndProc(ref m);
-		}
 		private void OnChanged(object sender, EventArgs e)
 		{
+			m_chart.ReloadSettings();
+		}
+
+		private void OnReset(object sender, EventArgs e)
+		{
+			m_chart.Settings.ResetToDefault();
+			m_propertyGrid.Refresh();
 			m_chart.ReloadSettings();
 		}
 		#endregion
 
 		#region members
-		private const int WM_CHAR = 0x0102;
 		private readonly Chart m_chart;
-		private readonly ChartSettings m_originalSettings;
 		#endregion
 	}
 }

@@ -42,8 +42,6 @@ namespace MT4LiquidityIndicator.Net.View
 			}
 			else
 			{
-				m_resetToDefaultToolStripMenuItem.Enabled = false;
-				m_resetPricesWindowPositionToolStripMenuItem.Enabled = false;
 				m_help.Text = string.Format("Configuration file does not exist or has invalid format, path:\r\n{0}", DataFeedImpl.ConfirugationPath);
 				m_spreads.Visible = false;
 			}
@@ -127,6 +125,26 @@ namespace MT4LiquidityIndicator.Net.View
 				proxy.Dispose();
 			}
 		}
+		private void OnConnectionsSettings(object sender, EventArgs e)
+		{
+			try
+			{
+				ConnectionsSettingsDialog dialog = new ConnectionsSettingsDialog();
+				DialogResult result = dialog.ShowDialog();
+				if (DialogResult.Cancel == result)
+				{
+
+				}
+				else if (DialogResult.Yes == result)
+				{
+
+				}
+			}
+			catch (System.Exception ex)
+			{
+				MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 		private void OnOptions(object sender, EventArgs e)
 		{
 			try
@@ -148,23 +166,19 @@ namespace MT4LiquidityIndicator.Net.View
 				MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-
-		private void OnResetToDefault(object sender, EventArgs e)
-		{
-			try
-			{
-				ChartSettingsManager.ResetToDefault(m_parameters.Symbol);
-				m_settings = ChartSettings.MakeDefault();
-				ReloadSettings();
-			}
-			catch (System.Exception ex)
-			{
-				MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
 		private void OnResetPricesWindowPosition(object sender, EventArgs e)
 		{
 			m_spreads.Location = Point.Empty;
+		}
+		private void OnGoTo(object sender, EventArgs e)
+		{
+		}
+		private void OnGoToNow(object sender, EventArgs e)
+		{
+		}
+		private void OnSaveAsCSV(object sender, EventArgs e)
+		{
+
 		}
 		#endregion
 		#region properties

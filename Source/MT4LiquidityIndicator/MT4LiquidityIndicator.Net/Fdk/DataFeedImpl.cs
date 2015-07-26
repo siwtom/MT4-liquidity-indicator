@@ -35,9 +35,10 @@ namespace MT4LiquidityIndicator.Net.Fdk
 			{
 				if (null == s_impl)
 				{
-					string connectionString = CreateConnectionString();
-					if (null != connectionString)
+					FixConnectionStringBuilder builder = LoadConnectionSettings();
+					if (null != builder)
 					{
+						string connectionString = builder.ToString();
 						s_impl = new DataFeedImpl(connectionString);
 					}
 					else
@@ -49,6 +50,22 @@ namespace MT4LiquidityIndicator.Net.Fdk
 				return s_impl;
 			}
 		}
+		internal static void UpdateConnectionSettings(FixConnectionStringBuilder builder)
+		{
+			DataFeedImpl dataFeedImpl = Create();
+			lock (s_synchronizer)
+			{
+				DataFeed feed = dataFeedImpl.Instance;
+				if (null != feed)
+				{
+					feed.Stop();
+					feed.Initialize(builder.ToString());
+					feed.Start();
+				}
+				string path = ConfirugationPath;
+				TrySaveFixConnectionStringBuilder(path, builder);
+			}
+		}
 		internal static string ConfirugationPath
 		{
 			get
@@ -57,15 +74,10 @@ namespace MT4LiquidityIndicator.Net.Fdk
 				return result;
 			}
 		}
-		private static string CreateConnectionString()
+		internal static FixConnectionStringBuilder LoadConnectionSettings()
 		{
 			string path = ConfirugationPath;
-			FixConnectionStringBuilder builder = TryLoadFixConnectionStringBuilder(path);
-			if (null == builder)
-			{
-				return null;
-			}
-			string result = builder.ToString();
+			FixConnectionStringBuilder result = TryLoadFixConnectionStringBuilder(path);
 			return result;
 		}
 		private static FixConnectionStringBuilder TryLoadFixConnectionStringBuilder(string path)
@@ -83,6 +95,20 @@ namespace MT4LiquidityIndicator.Net.Fdk
 			catch (System.Exception)
 			{
 				return null;
+			}
+		}
+		private static void TrySaveFixConnectionStringBuilder(string path, FixConnectionStringBuilder builder)
+		{
+			try
+			{
+				XmlSerializer serializer = new XmlSerializer(typeof(FixConnectionStringBuilder));
+				using (StreamWriter stream = new StreamWriter(path))
+				{
+					serializer.Serialize(stream, builder);
+				}
+			}
+			catch (System.Exception)
+			{
 			}
 		}
 		#endregion

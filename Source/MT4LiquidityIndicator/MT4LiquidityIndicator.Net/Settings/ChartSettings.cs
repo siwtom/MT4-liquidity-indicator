@@ -16,16 +16,7 @@ namespace MT4LiquidityIndicator.Net.Settings
 		#region construction
 		internal ChartSettings()
 		{
-			this.m_backgroundColor = Color.White;
-			this.m_foregoundColor = Color.Black;
-			this.Mode = RenderingMode.Quality;
-			this.m_duration = 60;
-			this.m_height = 250;
-			this.m_updateInterval = 500;
-			this.Grid = false;
-
-
-			this.Lines = new List<LineSettings>();
+			Initialize();
 		}
 		internal ChartSettings(ChartSettings settings)
 		{
@@ -50,6 +41,26 @@ namespace MT4LiquidityIndicator.Net.Settings
 				LineSettings line = new LineSettings(element);
 				this.Lines.Add(line);
 			}
+		}
+		internal void ResetToDefault()
+		{
+			Initialize();
+
+			this.Lines.Add(new LineSettings(10, Color.Green, Color.Green));
+			this.Lines.Add(new LineSettings(100, Color.Blue, Color.Blue));
+			this.Lines.Add(new LineSettings(200, Color.Red, Color.Red));
+		}
+		private void Initialize()
+		{
+			this.m_backgroundColor = Color.White;
+			this.m_foregoundColor = Color.Black;
+			this.Mode = RenderingMode.Quality;
+			this.m_duration = 60;
+			this.m_height = 250;
+			this.m_updateInterval = 500;
+			this.Grid = false;
+
+			this.Lines = new List<LineSettings>();
 		}
 		#endregion
 		#region properties
@@ -182,11 +193,7 @@ namespace MT4LiquidityIndicator.Net.Settings
 		internal static ChartSettings MakeDefault()
 		{
 			ChartSettings result = new ChartSettings();
-
-			result.Lines.Add(new LineSettings(10, Color.Green, Color.Green));
-			result.Lines.Add(new LineSettings(100, Color.Blue, Color.Blue));
-			result.Lines.Add(new LineSettings(200, Color.Red, Color.Red));
-
+			result.ResetToDefault();
 			return result;
 		}
 		#endregion
@@ -203,9 +210,7 @@ namespace MT4LiquidityIndicator.Net.Settings
 		private int m_updateInterval;
 		private const int m_minUpdateInterval = 10;
 		private const int m_maxUpdateInterval = 10000;
-
 		private Color m_backgroundColor;
-
 		private Color m_foregoundColor;
 
 		#endregion
