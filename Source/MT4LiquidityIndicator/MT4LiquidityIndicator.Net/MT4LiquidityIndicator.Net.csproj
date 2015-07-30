@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ChartBuilder.cs" />
     <Compile Include="Core\Algorithm.cs" />
+    <Compile Include="Core\CsvBuilder.cs" />
     <Compile Include="Core\EnvironmentEx.cs" />
     <Compile Include="Core\Graph.cs" />
     <Compile Include="Core\GraphicsEx.cs" />

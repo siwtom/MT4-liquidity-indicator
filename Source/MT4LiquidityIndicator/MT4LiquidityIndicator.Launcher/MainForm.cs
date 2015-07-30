@@ -16,7 +16,7 @@ namespace MT4LiquidityIndicator.Launcher
 		{
 			InitializeComponent();
 
-			string st = "This=0|Symbol=BTCUSD|Period=60|Digits=5|LotSize=100|Func=0";
+			string st = "This=0|Symbol=EURUSD|Period=60|Digits=5|LotSize=100000|Func=0";
 			Parameters parameters = new Parameters(st);
 			m_indicator.Construct(parameters);
 		}

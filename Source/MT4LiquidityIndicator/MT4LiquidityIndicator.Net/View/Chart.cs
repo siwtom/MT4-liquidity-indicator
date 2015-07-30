@@ -13,6 +13,7 @@ using MT4LiquidityIndicator.Net.Fdk;
 using MT4LiquidityIndicator.Net.Core;
 using MT4LiquidityIndicator.Net.Settings;
 using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace MT4LiquidityIndicator.Net.View
 {
@@ -130,15 +131,7 @@ namespace MT4LiquidityIndicator.Net.View
 			try
 			{
 				ConnectionsSettingsDialog dialog = new ConnectionsSettingsDialog();
-				DialogResult result = dialog.ShowDialog();
-				if (DialogResult.Cancel == result)
-				{
-
-				}
-				else if (DialogResult.Yes == result)
-				{
-
-				}
+				dialog.ShowDialog();
 			}
 			catch (System.Exception ex)
 			{
@@ -178,7 +171,31 @@ namespace MT4LiquidityIndicator.Net.View
 		}
 		private void OnSaveAsCSV(object sender, EventArgs e)
 		{
+			DialogResult result = m_saveFileDialog.ShowDialog();
+			if (DialogResult.OK != result)
+			{
+				return;
+			}
+			try
+			{
+				string path = m_saveFileDialog.FileName;
 
+				List<double> volumes = new List<double>();
+				foreach (var element in m_settings.Lines)
+				{
+					volumes.Add(element.Volume);
+				}
+
+				string text = CsvBuilder.Format(m_parameters.LotSize, m_parameters.RoundingStepOfPrice, volumes, m_quotes);
+				using (StreamWriter stream = new StreamWriter(path))
+				{
+					stream.Write(text);
+				}
+			}
+			catch (System.Exception ex)
+			{
+				MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 		#endregion
 		#region properties

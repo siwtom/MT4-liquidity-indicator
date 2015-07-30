@@ -37,11 +37,12 @@
 			this.m_resetPricesWindowPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.m_timer = new System.Windows.Forms.Timer(this.components);
 			this.m_contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.m_help = new System.Windows.Forms.Label();
-			this.m_site = new System.Windows.Forms.LinkLabel();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.m_help = new System.Windows.Forms.Label();
+			this.m_site = new System.Windows.Forms.LinkLabel();
 			this.m_spreads = new MT4LiquidityIndicator.Net.View.Prices();
+			this.m_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			viewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			connectionsSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +64,27 @@
 			connectionsSettingsToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
 			connectionsSettingsToolStripMenuItem.Text = "Connections settings";
 			connectionsSettingsToolStripMenuItem.Click += new System.EventHandler(this.OnConnectionsSettings);
+			// 
+			// goToToolStripMenuItem
+			// 
+			goToToolStripMenuItem.Name = "goToToolStripMenuItem";
+			goToToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+			goToToolStripMenuItem.Text = "Go to ...";
+			goToToolStripMenuItem.Click += new System.EventHandler(this.OnGoTo);
+			// 
+			// goToNowToolStripMenuItem
+			// 
+			goToNowToolStripMenuItem.Name = "goToNowToolStripMenuItem";
+			goToNowToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+			goToNowToolStripMenuItem.Text = "Go to now";
+			goToNowToolStripMenuItem.Click += new System.EventHandler(this.OnGoToNow);
+			// 
+			// saveAsCSVToolStripMenuItem
+			// 
+			saveAsCSVToolStripMenuItem.Name = "saveAsCSVToolStripMenuItem";
+			saveAsCSVToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+			saveAsCSVToolStripMenuItem.Text = "Save as CSV";
+			saveAsCSVToolStripMenuItem.Click += new System.EventHandler(this.OnSaveAsCSV);
 			// 
 			// m_resetPricesWindowPositionToolStripMenuItem
 			// 
@@ -89,7 +111,17 @@
             goToNowToolStripMenuItem,
             saveAsCSVToolStripMenuItem});
 			this.m_contextMenu.Name = "m_contextMenu";
-			this.m_contextMenu.Size = new System.Drawing.Size(228, 170);
+			this.m_contextMenu.Size = new System.Drawing.Size(228, 148);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(224, 6);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(224, 6);
 			// 
 			// m_help
 			// 
@@ -111,23 +143,6 @@
 			this.m_site.Text = "https://github.com/marmysh/MT4-liquidity-indicator";
 			this.m_site.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLink);
 			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(224, 6);
-			// 
-			// goToToolStripMenuItem
-			// 
-			goToToolStripMenuItem.Name = "goToToolStripMenuItem";
-			goToToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-			goToToolStripMenuItem.Text = "Go to ...";
-			goToToolStripMenuItem.Click += new System.EventHandler(this.OnGoTo);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(224, 6);
-			// 
 			// m_spreads
 			// 
 			this.m_spreads.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -137,19 +152,9 @@
 			this.m_spreads.TabIndex = 1;
 			this.m_spreads.Visible = false;
 			// 
-			// goToNowToolStripMenuItem
+			// m_saveFileDialog
 			// 
-			goToNowToolStripMenuItem.Name = "goToNowToolStripMenuItem";
-			goToNowToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-			goToNowToolStripMenuItem.Text = "Go to now";
-			goToNowToolStripMenuItem.Click += new System.EventHandler(this.OnGoToNow);
-			// 
-			// saveAsCSVToolStripMenuItem
-			// 
-			saveAsCSVToolStripMenuItem.Name = "saveAsCSVToolStripMenuItem";
-			saveAsCSVToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-			saveAsCSVToolStripMenuItem.Text = "Save as CSV";
-			saveAsCSVToolStripMenuItem.Click += new System.EventHandler(this.OnSaveAsCSV);
+			this.m_saveFileDialog.Filter = "CSV files|*.csv|All files|*.*";
 			// 
 			// Chart
 			// 
@@ -178,5 +183,6 @@
 		private System.Windows.Forms.ToolStripMenuItem m_resetPricesWindowPositionToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.SaveFileDialog m_saveFileDialog;
 	}
 }
