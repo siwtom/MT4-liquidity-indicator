@@ -11,7 +11,7 @@ using System.IO;
 
 namespace MT4LiquidityIndicator.Net.Fdk
 {
-	internal class DataFeedImpl
+	internal class DataFeedImpl : IDisposable
 	{
 		#region construction
 		private DataFeedImpl()

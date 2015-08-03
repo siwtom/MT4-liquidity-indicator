@@ -165,6 +165,8 @@ namespace MT4LiquidityIndicator.Net.View
 		}
 		private void OnGoTo(object sender, EventArgs e)
 		{
+			GoToDialog dialog = new GoToDialog(m_parameters.Symbol, m_settings.Duration);
+			dialog.ShowDialog();
 		}
 		private void OnGoToNow(object sender, EventArgs e)
 		{

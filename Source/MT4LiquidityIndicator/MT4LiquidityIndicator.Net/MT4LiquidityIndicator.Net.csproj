@@ -92,6 +92,12 @@
     <Compile Include="View\ConnectionsSettingsDialog.Designer.cs">
       <DependentUpon>ConnectionsSettingsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GoToDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GoToDialog.Designer.cs">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Prices.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ConnectionsSettingsDialog.resx">
       <DependentUpon>ConnectionsSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GoToDialog.resx">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Prices.resx">
       <DependentUpon>Prices.cs</DependentUpon>
