@@ -24,6 +24,26 @@ namespace MT4LiquidityIndicator.Net.Core
 				m_first.Add(entry);
 			}
 		}
+
+		internal void Set(Quote[] quotes)
+		{
+			m_quotes.Clear();
+
+			Quote last = quotes.Last();
+			m_time = 0;
+
+			foreach (var element in quotes)
+			{
+				long time = (long)(element.CreatingTime - last.CreatingTime).TotalMilliseconds;
+				long delta = (m_time - time);
+				if (delta <= m_intervalInMs)
+				{
+					QuoteEx quote = new QuoteEx(time, element);
+					m_quotes.Enqueue(quote);
+				}
+			}
+		}
+
 		internal void Refresh()
 		{
 			lock (m_synchronizer)

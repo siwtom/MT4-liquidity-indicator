@@ -28,9 +28,15 @@ namespace MT4LiquidityIndicator.Net.View
 		public void Construct(Parameters parameters)
 		{
 			m_parameters = parameters;
-			m_state = new ChartState(m_parameters, m_quotes);
+			m_realTimeState = new ChartState(m_parameters, m_realTimeQuotes);
+			m_historyState = new ChartState(m_parameters, m_historyQuotes);
+
+			m_currentState = m_realTimeState;
+
 			m_settings = ChartSettingsManager.GetSettings(parameters.Symbol);
-			m_quotes.Interval = m_settings.Duration;
+			m_realTimeQuotes.Interval = m_settings.Duration;
+			m_historyQuotes.Interval = m_settings.Duration;
+
 			m_parameters.SetHeight(m_settings.Height);
 			m_spreads.Height = (int)(m_settings.Height - cTopOffset - cBottomOffset);
 			m_timer.Interval = m_settings.UpdateInterval;
@@ -82,15 +88,15 @@ namespace MT4LiquidityIndicator.Net.View
 			{
 				return;
 			}
-			m_quotes.Add(e.Tick);
+			m_realTimeQuotes.Add(e.Tick);
 		}
 		private void OnTick(object sender, EventArgs e)
 		{
 			if ((null != m_proxy) && m_proxy.IsInitialized && (null != m_parameters))
 			{
-				m_quotes.Refresh();
+				m_realTimeQuotes.Refresh();
 				this.Invalidate();
-				m_spreads.Update(m_parameters, m_settings, m_quotes);
+				m_spreads.Update(m_parameters, m_settings, m_realTimeQuotes);
 			}
 		}
 		protected override void OnPaint(PaintEventArgs e)
@@ -166,7 +172,15 @@ namespace MT4LiquidityIndicator.Net.View
 		private void OnGoTo(object sender, EventArgs e)
 		{
 			GoToDialog dialog = new GoToDialog(m_parameters.Symbol, m_settings.Duration);
-			dialog.ShowDialog();
+			DialogResult result = dialog.ShowDialog();
+			if (DialogResult.OK != result)
+			{
+				return;
+			}
+			Quote[] quotes = dialog.Quotes;
+			m_historyQuotes.Set(quotes);
+			m_currentState = m_historyState;
+			this.Invalidate();
 		}
 		private void OnGoToNow(object sender, EventArgs e)
 		{
@@ -188,7 +202,7 @@ namespace MT4LiquidityIndicator.Net.View
 					volumes.Add(element.Volume);
 				}
 
-				string text = CsvBuilder.Format(m_parameters.LotSize, m_parameters.RoundingStepOfPrice, volumes, m_quotes);
+				string text = CsvBuilder.Format(m_parameters.LotSize, m_parameters.RoundingStepOfPrice, volumes, m_realTimeQuotes);
 				using (StreamWriter stream = new StreamWriter(path))
 				{
 					stream.Write(text);
@@ -221,11 +235,12 @@ namespace MT4LiquidityIndicator.Net.View
 		{
 			try
 			{
-				m_quotes.Interval = m_settings.Duration;
+				m_realTimeQuotes.Interval = m_settings.Duration;
+				m_historyQuotes.Interval = m_settings.Duration;
 				m_timer.Interval = m_settings.UpdateInterval;
 				m_parameters.SetHeight(m_settings.Height);
-				m_quotes.Refresh();
-				m_spreads.Update(m_parameters, m_settings, m_quotes);
+				m_realTimeQuotes.Refresh();
+				m_spreads.Update(m_parameters, m_settings, m_realTimeQuotes);
 				this.Invalidate();
 			}
 			catch (System.Exception ex)
@@ -253,7 +268,7 @@ namespace MT4LiquidityIndicator.Net.View
 		}
 		private void DoDraw(GraphicsEx g)
 		{
-			if (!m_quotes.Empty)
+			if (!m_currentState.Empty)
 			{
 				DoDrawData(g);
 			}
@@ -277,8 +292,8 @@ namespace MT4LiquidityIndicator.Net.View
 		#region data drawing
 		private void DoDrawData(GraphicsEx g)
 		{
-			m_state.Refresh(m_settings);
-			RectF area = m_state.PhysicalArea;
+			m_currentState.Refresh(m_settings);
+			RectF area = m_currentState.PhysicalArea;
 
 			float w = (float)this.Width - cLeftOffset - cRightOffset;
 			float h = (float)this.Height - cBottomOffset - cTopOffset;
@@ -293,10 +308,10 @@ namespace MT4LiquidityIndicator.Net.View
 			g.Physical = physical;
 			g.Logical = logical;
 
-			int count = m_state.Graphs.Count;
+			int count = m_currentState.Graphs.Count;
 			for (int index = 0; index < count; ++index)
 			{
-				Graph graph = m_state.Graphs[index];
+				Graph graph = m_currentState.Graphs[index];
 				Color bidColor = m_settings.Lines[index].BidColor;
 				Color askColor = m_settings.Lines[index].AskColor;
 				DrawLine(g, graph, bidColor, askColor);
@@ -343,9 +358,7 @@ namespace MT4LiquidityIndicator.Net.View
 			g.DrawLine(pen, w - cArrowOffset, h - cBottomOffset - cArrowOffset / 2, w, h - cBottomOffset);
 			g.DrawLine(pen, w - cArrowOffset, h - cBottomOffset + cArrowOffset / 2, w, h - cBottomOffset);
 
-
-
-			foreach(var element in m_state.XPhysicalDashes)
+			foreach(var element in m_currentState.XPhysicalDashes)
 			{
 				float x = g.TransformX(element.X);
 				float y = g.TransformY(element.Y);
@@ -360,7 +373,7 @@ namespace MT4LiquidityIndicator.Net.View
 
 
 			
-			foreach (var element in m_state.YPhysicalDashes)
+			foreach (var element in m_currentState.YPhysicalDashes)
 			{
 				float x = g.TransformX(element.X);
 				float y = g.TransformY(element.Y);
@@ -371,7 +384,7 @@ namespace MT4LiquidityIndicator.Net.View
 		}
 		private void DoDrawGrid(GraphicsEx g, Pen pen, RectF area)
 		{
-			foreach (var element in m_state.XPhysicalDashes)
+			foreach (var element in m_currentState.XPhysicalDashes)
 			{
 				float x = g.TransformX(element.X);
 				float y = g.TransformY(element.Y);
@@ -379,7 +392,7 @@ namespace MT4LiquidityIndicator.Net.View
 				g.DrawLine(pen, x, y, x, 0);
 			}
 
-			foreach (var element in m_state.YPhysicalDashes)
+			foreach (var element in m_currentState.YPhysicalDashes)
 			{
 				float x = g.TransformX(element.X);
 				float y = g.TransformY(element.Y);
@@ -394,8 +407,11 @@ namespace MT4LiquidityIndicator.Net.View
 		private DataFeedProxy m_proxy;
 		private Parameters m_parameters;
 		private ChartSettings m_settings;
-		private readonly Quotes m_quotes = new Quotes(60);
-		private ChartState m_state;
+		private readonly Quotes m_realTimeQuotes = new Quotes(60);
+		private readonly Quotes m_historyQuotes = new Quotes(60);
+		private ChartState m_currentState;
+		private ChartState m_realTimeState;
+		private ChartState m_historyState;
 		private const int WM_DESTROY = 0x0002;
 		private string cOffQuotes = "Off quotes";
 		private const float cLeftOffset = 10;

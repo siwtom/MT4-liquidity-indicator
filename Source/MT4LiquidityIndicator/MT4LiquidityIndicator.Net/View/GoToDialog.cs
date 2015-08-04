@@ -81,6 +81,20 @@ namespace MT4LiquidityIndicator.Net.View
 			Log(message);
 		}
 
+		private void Close(DialogResult result)
+		{
+			if (this.InvokeRequired)
+			{
+				Action<DialogResult> func = Close;
+				BeginInvoke(func, result);
+			}
+			else
+			{
+				this.DialogResult = result;
+				this.Close();
+			}
+		}
+
 		#endregion
 
 
@@ -96,8 +110,7 @@ namespace MT4LiquidityIndicator.Net.View
 
 			if (isSuccessfull)
 			{
-				Action func = Close;
-				BeginInvoke(func);
+				Close(DialogResult.OK);
 			}
 		}
 

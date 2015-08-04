@@ -24,6 +24,13 @@ namespace MT4LiquidityIndicator.Net.View
 		internal RectF PhysicalArea { get; private set; }
 		internal List<PointF> XPhysicalDashes { get; private set; }
 		internal List<PointF> YPhysicalDashes { get; private set; }
+		internal bool Empty
+		{
+			get
+			{
+				return m_quotes.Empty;
+			}
+		}
 		#endregion
 
 		#region methods

@@ -36,6 +36,15 @@
 			label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new System.Drawing.Point(30, 27);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(32, 13);
+			label1.TabIndex = 5;
+			label1.Text = "UTC:";
+			// 
 			// m_cancel
 			// 
 			this.m_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -46,17 +55,9 @@
 			this.m_cancel.Text = "Cancel";
 			this.m_cancel.UseVisualStyleBackColor = true;
 			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Location = new System.Drawing.Point(30, 27);
-			label1.Name = "label1";
-			label1.Size = new System.Drawing.Size(32, 13);
-			label1.TabIndex = 5;
-			label1.Text = "UTC:";
-			// 
 			// m_go
 			// 
+			this.m_go.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.m_go.Location = new System.Drawing.Point(263, 21);
 			this.m_go.Name = "m_go";
 			this.m_go.Size = new System.Drawing.Size(75, 23);
