@@ -76,10 +76,10 @@ namespace MT4LiquidityIndicator.Net.View
 			{
 				this.Size = size;
 			}
-			if (!this.Visible)
-			{
-				this.Visible = true;
-			}
+			//if (!this.Visible)
+			//{
+			//	this.Visible = true;
+			//}
 		}
 		private void Update(int count)
 		{

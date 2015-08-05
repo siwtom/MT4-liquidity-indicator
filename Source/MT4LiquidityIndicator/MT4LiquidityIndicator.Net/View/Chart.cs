@@ -181,9 +181,24 @@ namespace MT4LiquidityIndicator.Net.View
 			m_historyQuotes.Set(quotes);
 			m_currentState = m_historyState;
 			this.Invalidate();
+
+			m_connectionsSettingsToolStripMenuItem.Enabled = false;
+			m_viewOptionsToolStripMenuItem.Enabled = false;
+			m_resetPricesWindowPositionToolStripMenuItem.Enabled = false;
+			m_goToToolStripMenuItem.Checked = true;
+			m_goToNowToolStripMenuItem.Checked = false;
+			m_spreads.Hide();
 		}
 		private void OnGoToNow(object sender, EventArgs e)
 		{
+			m_connectionsSettingsToolStripMenuItem.Enabled = true;
+			m_viewOptionsToolStripMenuItem.Enabled = true;
+			m_resetPricesWindowPositionToolStripMenuItem.Enabled = true;
+			m_goToToolStripMenuItem.Checked = false;
+			m_goToNowToolStripMenuItem.Checked = true;
+			m_spreads.Visible = true;
+			m_currentState = m_realTimeState;
+			this.Invalidate();
 		}
 		private void OnSaveAsCSV(object sender, EventArgs e)
 		{
@@ -202,7 +217,9 @@ namespace MT4LiquidityIndicator.Net.View
 					volumes.Add(element.Volume);
 				}
 
-				string text = CsvBuilder.Format(m_parameters.LotSize, m_parameters.RoundingStepOfPrice, volumes, m_realTimeQuotes);
+				Quotes quotes = m_currentState.Quotes;
+
+				string text = CsvBuilder.Format(m_parameters.LotSize, m_parameters.RoundingStepOfPrice, volumes, quotes);
 				using (StreamWriter stream = new StreamWriter(path))
 				{
 					stream.Write(text);

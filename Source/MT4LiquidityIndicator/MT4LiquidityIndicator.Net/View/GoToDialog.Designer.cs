@@ -98,7 +98,7 @@
 			this.MinimizeBox = false;
 			this.Name = "GoToDialog";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Go to ...";
+			this.Text = "View quotes history";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
