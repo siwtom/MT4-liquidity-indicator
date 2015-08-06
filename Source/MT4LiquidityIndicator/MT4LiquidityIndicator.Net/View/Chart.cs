@@ -428,7 +428,7 @@ namespace MT4LiquidityIndicator.Net.View
 		private ChartState m_realTimeState;
 		private ChartState m_historyState;
 		private const int WM_DESTROY = 0x0002;
-		private string cOffQuotes = "Off quotes";
+		private const string cOffQuotes = "Off quotes";
 		private const float cLeftOffset = 10;
 		private const float cRightOffset = 50;
 		private const float cBottomOffset = 20;

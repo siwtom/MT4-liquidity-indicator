@@ -103,7 +103,7 @@ namespace MT4LiquidityIndicator.Net.View
 		private void Download()
 		{
 			string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-			Log("Using of a temporary directory = {0}", path);
+			Log("Using a temporary directory = {0}", path);
 
 			bool isSuccessfull = SafeDownload(path) && SafeDeleteDirectory(path);
 			m_thread = null;
@@ -126,17 +126,21 @@ namespace MT4LiquidityIndicator.Net.View
 					DataFeed feed = impl.Instance;
 					using (DataFeedStorage storage = new DataFeedStorage(path, StorageProvider.Ntfs, 1, feed, false))
 					{
+						HistoryInfo info = storage.Online.GetQuotesInfo(m_symbol, 0);
+						string availbaleFrom = info.AvailableFrom.ToString(cDateTimeFormat);
+						string availableTo = info.AvailableTo.ToString(cDateTimeFormat);
+						Log("Quotes history available from = {0} to = {1}", availbaleFrom, availableTo);
 						DateTime startTime = m_timestamp.AddSeconds(-m_duration);
-						Log("Start time = {0}", startTime);
+						Log("Start time = {0}", startTime.ToString(cDateTimeFormat));
 						DateTime endTime = m_timestamp;
-						Log("End time = {0}", endTime);
+						Log("End time = {0}", endTime.ToString(cDateTimeFormat));
 						this.Quotes = storage.Online.GetQuotes(m_symbol, startTime, endTime, 0);
 					}
 				}
 
 				Log("{0} quotes have been loaded", this.Quotes.Length);
 
-				result = true;
+				result = this.Quotes.Length > 0;
 			}
 			catch (Exception ex)
 			{
@@ -172,6 +176,7 @@ namespace MT4LiquidityIndicator.Net.View
 
 		private readonly string m_symbol;
 		private readonly int m_duration;
+		private const string cDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
 
 		#endregion
 
