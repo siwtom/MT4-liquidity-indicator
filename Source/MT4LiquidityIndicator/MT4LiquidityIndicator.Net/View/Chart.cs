@@ -183,7 +183,6 @@ namespace MT4LiquidityIndicator.Net.View
 			this.Invalidate();
 
 			m_connectionsSettingsToolStripMenuItem.Enabled = false;
-			m_viewOptionsToolStripMenuItem.Enabled = false;
 			m_resetPricesWindowPositionToolStripMenuItem.Enabled = false;
 			m_goToToolStripMenuItem.Checked = true;
 			m_goToNowToolStripMenuItem.Checked = false;
@@ -192,7 +191,6 @@ namespace MT4LiquidityIndicator.Net.View
 		private void OnGoToNow(object sender, EventArgs e)
 		{
 			m_connectionsSettingsToolStripMenuItem.Enabled = true;
-			m_viewOptionsToolStripMenuItem.Enabled = true;
 			m_resetPricesWindowPositionToolStripMenuItem.Enabled = true;
 			m_goToToolStripMenuItem.Checked = false;
 			m_goToNowToolStripMenuItem.Checked = true;
