@@ -24,6 +24,7 @@ namespace MT4LiquidityIndicator.Net.View
 
 			m_symbol = symbol;
 			m_duration = duration;
+			m_dateTime.Value = DateTime.UtcNow;
 		}
 
 		#endregion
