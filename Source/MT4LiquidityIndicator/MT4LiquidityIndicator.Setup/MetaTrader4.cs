@@ -91,7 +91,7 @@ namespace MT4LiquidityIndicator.Setup
 			{
 				Save(cLibrariesRelativePath, "MT4LiquidityIndicator.dll", Artifacts.MT4LiquidityIndicatorDll);
 				Save(cLibrariesRelativePath, "MT4LiquidityIndicator.Net.dll", Artifacts.MT4LiquidityIndicator_Net);
-				Save(cLibrariesRelativePath, "SoftFX.Extended.Net.dll", Artifacts.SoftFX_Extended_Net);
+				SaveFdk();
 				Save(cIndicatorsRelativePath, "MT4LiquidityIndicator.mq4", Artifacts.MT4LiquidityIndicatorMql);
 				string path = Path.Combine(m_root, cIndicatorsRelativePath, "MT4LiquidityIndicator.ex4");
 				if (File.Exists(path))
@@ -109,6 +109,16 @@ namespace MT4LiquidityIndicator.Setup
 		private void Save(string directory ,string name, byte[] data)
 		{
 			string path = Path.Combine(m_root, directory, name);
+			using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
+			{
+				stream.Write(data, 0, data.Length);
+			}
+		}
+
+		private void SaveFdk()
+		{
+			string path = Path.Combine(m_name, "SoftFX.Extended.Net.dll");
+			byte[] data = Artifacts.SoftFX_Extended_Net;
 			using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
 			{
 				stream.Write(data, 0, data.Length);
