@@ -87,14 +87,22 @@ namespace MT4LiquidityIndicator.Setup
 		#region methods
 		internal void Install()
 		{
-			Save(cLibrariesRelativePath, "MT4LiquidityIndicator.dll", Artifacts.MT4LiquidityIndicatorDll);
-			Save(cLibrariesRelativePath, "MT4LiquidityIndicator.Net.dll", Artifacts.MT4LiquidityIndicator_Net);
-			Save(cLibrariesRelativePath, "SoftFX.Extended.Net.dll", Artifacts.SoftFX_Extended_Net);
-			Save(cIndicatorsRelativePath, "MT4LiquidityIndicator.mq4", Artifacts.MT4LiquidityIndicatorMql);
-			string path = Path.Combine(m_root, cIndicatorsRelativePath, "MT4LiquidityIndicator.ex4");
-			if (File.Exists(path))
+			try
 			{
-				File.Delete(path);
+				Save(cLibrariesRelativePath, "MT4LiquidityIndicator.dll", Artifacts.MT4LiquidityIndicatorDll);
+				Save(cLibrariesRelativePath, "MT4LiquidityIndicator.Net.dll", Artifacts.MT4LiquidityIndicator_Net);
+				Save(cLibrariesRelativePath, "SoftFX.Extended.Net.dll", Artifacts.SoftFX_Extended_Net);
+				Save(cIndicatorsRelativePath, "MT4LiquidityIndicator.mq4", Artifacts.MT4LiquidityIndicatorMql);
+				string path = Path.Combine(m_root, cIndicatorsRelativePath, "MT4LiquidityIndicator.ex4");
+				if (File.Exists(path))
+				{
+					File.Delete(path);
+				}
+				m_suffix = "installed";
+			}
+			catch (Exception ex)
+			{
+				m_suffix = ex;
 			}
 		}
 
@@ -109,13 +117,22 @@ namespace MT4LiquidityIndicator.Setup
 
 		public override string ToString()
 		{
-			return m_name;
+			if(null != m_suffix)
+			{
+				string result = string.Format("{0} - {1}", m_name, m_suffix);
+				return result;
+			}
+			else
+			{
+				return m_name;
+			}
 		}
 		#endregion
 
 		#region members
 		private readonly string m_name;
 		private readonly string m_root;
+		private object m_suffix;
 		#endregion
 
 		#region constants

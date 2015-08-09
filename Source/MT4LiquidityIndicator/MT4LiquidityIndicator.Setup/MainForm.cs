@@ -40,14 +40,8 @@ namespace MT4LiquidityIndicator.Setup
 
 		private void Install(MetaTrader4 trader)
 		{
-			try
-			{
-				trader.Install();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+			trader.Install();
+			m_metaTraders.Refresh();
 		}
 
 		private void OnCheck(object sender, ItemCheckEventArgs e)

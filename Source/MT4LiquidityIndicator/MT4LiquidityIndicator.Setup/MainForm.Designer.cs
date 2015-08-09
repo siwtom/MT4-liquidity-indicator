@@ -35,17 +35,22 @@
 			// 
 			// m_metaTraders
 			// 
+			this.m_metaTraders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_metaTraders.FormattingEnabled = true;
+			this.m_metaTraders.HorizontalScrollbar = true;
 			this.m_metaTraders.Location = new System.Drawing.Point(24, 48);
 			this.m_metaTraders.Name = "m_metaTraders";
-			this.m_metaTraders.Size = new System.Drawing.Size(562, 364);
+			this.m_metaTraders.Size = new System.Drawing.Size(306, 319);
 			this.m_metaTraders.TabIndex = 0;
 			this.m_metaTraders.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.OnCheck);
 			// 
 			// m_install
 			// 
+			this.m_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_install.Enabled = false;
-			this.m_install.Location = new System.Drawing.Point(511, 12);
+			this.m_install.Location = new System.Drawing.Point(255, 12);
 			this.m_install.Name = "m_install";
 			this.m_install.Size = new System.Drawing.Size(75, 23);
 			this.m_install.TabIndex = 1;
@@ -66,12 +71,11 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(610, 436);
+			this.ClientSize = new System.Drawing.Size(354, 398);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.m_install);
 			this.Controls.Add(this.m_metaTraders);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.MaximizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(370, 437);
 			this.Name = "MainForm";
 			this.Text = "MT4 Liquidity Indicator";
 			this.ResumeLayout(false);
