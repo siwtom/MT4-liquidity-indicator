@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace MT4LiquidityIndicator.Setup
 {
-	class MetaTrader4
+	internal class MetaTrader4
 	{
 		#region construction
-		private MetaTrader4(string name, string root)
+		internal MetaTrader4(string name, string root)
 		{
 			m_name = name;
 			m_root = root;
@@ -86,19 +86,11 @@ namespace MT4LiquidityIndicator.Setup
 		#endregion
 
 		#region methods
-		internal void Install()
+		internal void TryToInstall()
 		{
 			try
 			{
-				Save(cLibrariesRelativePath, "MT4LiquidityIndicator.dll", Artifacts.MT4LiquidityIndicatorDll);
-				Save(cLibrariesRelativePath, "MT4LiquidityIndicator.Net.dll", Artifacts.MT4LiquidityIndicator_Net);
-				SaveFdk();
-				Save(cIndicatorsRelativePath, "MT4LiquidityIndicator.mq4", Artifacts.MT4LiquidityIndicatorMql);
-				string path = Path.Combine(m_root, cIndicatorsRelativePath, "MT4LiquidityIndicator.ex4");
-				if (File.Exists(path))
-				{
-					File.Delete(path);
-				}
+				Install();
 				m_suffix = "installed";
 			}
 			catch (Exception ex)
@@ -107,9 +99,24 @@ namespace MT4LiquidityIndicator.Setup
 			}
 		}
 
+		internal void Install()
+		{
+			Save(cLibrariesRelativePath, "MT4LiquidityIndicator.dll", Artifacts.MT4LiquidityIndicatorDll);
+			Save(cLibrariesRelativePath, "MT4LiquidityIndicator.Net.dll", Artifacts.MT4LiquidityIndicator_Net);
+			SaveFdk();
+			Save(cIndicatorsRelativePath, "MT4LiquidityIndicator.mq4", Artifacts.MT4LiquidityIndicatorMql);
+			string path = Path.Combine(m_root, cIndicatorsRelativePath, "MT4LiquidityIndicator.ex4");
+			if (File.Exists(path))
+			{
+				File.Delete(path);
+			}
+		}
+
 		private void Save(string directory ,string name, byte[] data)
 		{
-			string path = Path.Combine(m_root, directory, name);
+			string path = Path.Combine(m_root, directory);
+			Directory.CreateDirectory(path);
+			path = Path.Combine(path, name);
 			using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
 			{
 				stream.Write(data, 0, data.Length);

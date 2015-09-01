@@ -40,7 +40,7 @@ namespace MT4LiquidityIndicator.Setup
 
 		private void Install(MetaTrader4 trader)
 		{
-			trader.Install();
+			trader.TryToInstall();
 			m_metaTraders.Refresh();
 		}
 
@@ -69,6 +69,26 @@ namespace MT4LiquidityIndicator.Setup
 				obj = m_metaTraders.Items[index];
 			}
 			m_propertyGrid.SelectedObject = obj;
+		}
+
+		private void OnExtract(object sender, EventArgs e)
+		{
+			DialogResult result = m_dialog.ShowDialog();
+			if (DialogResult.OK != result)
+			{
+				return;
+			}
+
+			try
+			{
+				string root = m_dialog.SelectedPath;
+				MetaTrader4 mt4 = new MetaTrader4(root, root);
+				mt4.TryToInstall();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
 		}
 	}
 }

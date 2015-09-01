@@ -28,11 +28,24 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.Button button1;
 			this.m_metaTraders = new System.Windows.Forms.CheckedListBox();
 			this.m_install = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.m_propertyGrid = new System.Windows.Forms.PropertyGrid();
+			this.m_dialog = new System.Windows.Forms.FolderBrowserDialog();
+			button1 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
+			// 
+			// button1
+			// 
+			button1.Location = new System.Drawing.Point(706, 13);
+			button1.Name = "button1";
+			button1.Size = new System.Drawing.Size(75, 23);
+			button1.TabIndex = 4;
+			button1.Text = "Extract";
+			button1.UseVisualStyleBackColor = true;
+			button1.Click += new System.EventHandler(this.OnExtract);
 			// 
 			// m_metaTraders
 			// 
@@ -85,6 +98,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(895, 498);
+			this.Controls.Add(button1);
 			this.Controls.Add(this.m_propertyGrid);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.m_install);
@@ -103,6 +117,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button m_install;
 		private System.Windows.Forms.PropertyGrid m_propertyGrid;
+		private System.Windows.Forms.FolderBrowserDialog m_dialog;
 	}
 }
 
