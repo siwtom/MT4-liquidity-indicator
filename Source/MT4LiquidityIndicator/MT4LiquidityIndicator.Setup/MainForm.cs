@@ -59,5 +59,16 @@ namespace MT4LiquidityIndicator.Setup
 				m_install.Enabled = false;
 			}
 		}
+
+		private void OnSelected(object sender, EventArgs e)
+		{
+			int index = m_metaTraders.SelectedIndex;
+			object obj = null;
+			if (-1 != index)
+			{
+				obj = m_metaTraders.Items[index];
+			}
+			m_propertyGrid.SelectedObject = obj;
+		}
 	}
 }

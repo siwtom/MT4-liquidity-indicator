@@ -31,6 +31,7 @@
 			this.m_metaTraders = new System.Windows.Forms.CheckedListBox();
 			this.m_install = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.m_propertyGrid = new System.Windows.Forms.PropertyGrid();
 			this.SuspendLayout();
 			// 
 			// m_metaTraders
@@ -42,15 +43,16 @@
 			this.m_metaTraders.HorizontalScrollbar = true;
 			this.m_metaTraders.Location = new System.Drawing.Point(24, 48);
 			this.m_metaTraders.Name = "m_metaTraders";
-			this.m_metaTraders.Size = new System.Drawing.Size(306, 319);
+			this.m_metaTraders.Size = new System.Drawing.Size(847, 229);
 			this.m_metaTraders.TabIndex = 0;
 			this.m_metaTraders.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.OnCheck);
+			this.m_metaTraders.SelectedIndexChanged += new System.EventHandler(this.OnSelected);
 			// 
 			// m_install
 			// 
 			this.m_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.m_install.Enabled = false;
-			this.m_install.Location = new System.Drawing.Point(255, 12);
+			this.m_install.Location = new System.Drawing.Point(796, 12);
 			this.m_install.Name = "m_install";
 			this.m_install.Size = new System.Drawing.Size(75, 23);
 			this.m_install.TabIndex = 1;
@@ -67,11 +69,23 @@
 			this.label1.TabIndex = 2;
 			this.label1.Text = "List of detected Meta Trader4 clients";
 			// 
+			// m_propertyGrid
+			// 
+			this.m_propertyGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.m_propertyGrid.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+			this.m_propertyGrid.HelpVisible = false;
+			this.m_propertyGrid.Location = new System.Drawing.Point(24, 291);
+			this.m_propertyGrid.Name = "m_propertyGrid";
+			this.m_propertyGrid.Size = new System.Drawing.Size(847, 195);
+			this.m_propertyGrid.TabIndex = 3;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(354, 398);
+			this.ClientSize = new System.Drawing.Size(895, 498);
+			this.Controls.Add(this.m_propertyGrid);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.m_install);
 			this.Controls.Add(this.m_metaTraders);
@@ -88,6 +102,7 @@
 		private System.Windows.Forms.CheckedListBox m_metaTraders;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button m_install;
+		private System.Windows.Forms.PropertyGrid m_propertyGrid;
 	}
 }
 

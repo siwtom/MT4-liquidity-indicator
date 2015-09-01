@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -133,6 +134,42 @@ namespace MT4LiquidityIndicator.Setup
 				return result;
 			}
 			else
+			{
+				return m_name;
+			}
+		}
+		#endregion
+
+		#region properties
+		public string Home
+		{
+			get
+			{
+				return m_root;
+			}
+		}
+		[DisplayName("Indicators directory")]
+		public string IndicatorDir
+		{
+			get
+			{
+				string result = Path.Combine(m_root, cIndicatorsRelativePath);
+				return result;
+			}
+		}
+		[DisplayName("Libraries directory")]
+		public string LibraryDir
+		{
+			get
+			{
+				string result = Path.Combine(m_root, cLibrariesRelativePath);
+				return result;
+			}
+		}
+		[DisplayName("Terminal directory")]
+		public string TerminalDIr
+		{
+			get
 			{
 				return m_name;
 			}
