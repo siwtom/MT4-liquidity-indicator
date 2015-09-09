@@ -20,6 +20,8 @@ namespace MT4LiquidityIndicator.Net.View
 			if (null == builder)
 			{
 				builder = new FixConnectionStringBuilder();
+				builder.TradingPlatformPort = 5003;
+				builder.SecureConnection = true;
 			}
 			m_address.Text = builder.TradingPlatformAddress;
 			m_port.Text = builder.TradingPlatformPort.ToString();

@@ -107,8 +107,6 @@
 			// m_ssl
 			// 
 			this.m_ssl.AutoSize = true;
-			this.m_ssl.Checked = true;
-			this.m_ssl.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.m_ssl.Location = new System.Drawing.Point(199, 49);
 			this.m_ssl.Name = "m_ssl";
 			this.m_ssl.Size = new System.Drawing.Size(46, 17);
@@ -137,7 +135,6 @@
 			this.m_port.Name = "m_port";
 			this.m_port.Size = new System.Drawing.Size(85, 20);
 			this.m_port.TabIndex = 5;
-			this.m_port.Text = "5003";
 			this.m_port.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
 			// 
 			// m_address
