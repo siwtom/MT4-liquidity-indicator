@@ -45,26 +45,14 @@ namespace MT4LiquidityIndicator.Net.View
 			if (m_proxy.IsInitialized)
 			{
 				m_help.Visible = false;
-				m_site.Visible = false;
 			}
 			else
 			{
-				m_help.Text = string.Format("Configuration file does not exist or has invalid format, path:\r\n{0}", DataFeedImpl.ConfirugationPath);
 				m_spreads.Visible = false;
 			}
 		}
 		#endregion
 		#region event handlers
-		private void OnLink(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			try
-			{
-				Process.Start(m_site.Text);
-			}
-			catch (System.Exception)
-			{
-			}
-		}
 		private void OnClick(object sender, EventArgs e)
 		{
 			m_spreads.Deselect();
@@ -102,14 +90,14 @@ namespace MT4LiquidityIndicator.Net.View
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
-			if (m_proxy.IsInitialized)
+			if ((null != m_proxy) && m_proxy.IsInitialized)
 			{
 				Draw(e.Graphics);
 			}
 		}
 		protected override void OnPaintBackground(PaintEventArgs e)
 		{
-			if (!m_proxy.IsInitialized)
+			if ((null == m_proxy) ||!m_proxy.IsInitialized)
 			{
 				base.OnPaintBackground(e);
 			}
@@ -138,6 +126,11 @@ namespace MT4LiquidityIndicator.Net.View
 			{
 				ConnectionsSettingsDialog dialog = new ConnectionsSettingsDialog();
 				dialog.ShowDialog();
+				if (m_proxy.IsInitialized)
+				{
+					m_help.Visible = false;
+					m_spreads.Visible = true;
+				}
 			}
 			catch (System.Exception ex)
 			{

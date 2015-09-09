@@ -107,10 +107,12 @@
 			// m_ssl
 			// 
 			this.m_ssl.AutoSize = true;
+			this.m_ssl.Checked = true;
+			this.m_ssl.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.m_ssl.Location = new System.Drawing.Point(199, 49);
 			this.m_ssl.Name = "m_ssl";
 			this.m_ssl.Size = new System.Drawing.Size(46, 17);
-			this.m_ssl.TabIndex = 8;
+			this.m_ssl.TabIndex = 6;
 			this.m_ssl.Text = "SSL";
 			this.m_ssl.UseVisualStyleBackColor = true;
 			// 
@@ -119,7 +121,7 @@
 			this.m_password.Location = new System.Drawing.Point(96, 105);
 			this.m_password.Name = "m_password";
 			this.m_password.Size = new System.Drawing.Size(264, 20);
-			this.m_password.TabIndex = 7;
+			this.m_password.TabIndex = 8;
 			this.m_password.UseSystemPasswordChar = true;
 			// 
 			// m_username
@@ -127,7 +129,7 @@
 			this.m_username.Location = new System.Drawing.Point(96, 76);
 			this.m_username.Name = "m_username";
 			this.m_username.Size = new System.Drawing.Size(264, 20);
-			this.m_username.TabIndex = 6;
+			this.m_username.TabIndex = 7;
 			// 
 			// m_port
 			// 
@@ -135,6 +137,7 @@
 			this.m_port.Name = "m_port";
 			this.m_port.Size = new System.Drawing.Size(85, 20);
 			this.m_port.TabIndex = 5;
+			this.m_port.Text = "5003";
 			this.m_port.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
 			// 
 			// m_address
@@ -150,7 +153,7 @@
 			this.button1.Location = new System.Drawing.Point(241, 188);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 6;
+			this.button1.TabIndex = 9;
 			this.button1.Text = "OK";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.OnOK);
@@ -161,7 +164,7 @@
 			this.button2.Location = new System.Drawing.Point(332, 188);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 7;
+			this.button2.TabIndex = 10;
 			this.button2.Text = "Cancel";
 			this.button2.UseVisualStyleBackColor = true;
 			// 

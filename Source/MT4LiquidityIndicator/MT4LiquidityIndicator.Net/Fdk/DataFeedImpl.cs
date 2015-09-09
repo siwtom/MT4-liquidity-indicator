@@ -16,18 +16,26 @@ namespace MT4LiquidityIndicator.Net.Fdk
 		#region construction
 		private DataFeedImpl()
 		{
-		}
-		private DataFeedImpl(string connectionString)
-		{
-			m_feed = new DataFeed(connectionString);
-
+			m_feed = new DataFeed();
 			m_feed.Logon += OnLogon;
 			m_feed.Logout += OnLogout;
-			m_feed.Start();
+			m_feed.Tick += OnTick;
 
-			m_continue = true;
 			m_thread = new Thread(Loop);
 			m_thread.Start();
+
+			m_continue = true;
+		}
+
+		private void Intialize(string connectionString)
+		{
+			if (this.IsInitialized)
+			{
+				m_feed.Stop();
+			}
+			m_feed.Initialize(connectionString);
+			m_feed.Start();
+			this.IsInitialized = true;
 		}
 		internal static DataFeedImpl Create()
 		{
@@ -35,15 +43,12 @@ namespace MT4LiquidityIndicator.Net.Fdk
 			{
 				if (null == s_impl)
 				{
+					s_impl = new DataFeedImpl();
 					FixConnectionStringBuilder builder = LoadConnectionSettings();
 					if (null != builder)
 					{
 						string connectionString = builder.ToString();
-						s_impl = new DataFeedImpl(connectionString);
-					}
-					else
-					{
-						s_impl = new DataFeedImpl();
+						s_impl.Intialize(connectionString);
 					}
 				}
 				s_counter++;
@@ -55,13 +60,7 @@ namespace MT4LiquidityIndicator.Net.Fdk
 			DataFeedImpl dataFeedImpl = Create();
 			lock (s_synchronizer)
 			{
-				DataFeed feed = dataFeedImpl.Instance;
-				if (null != feed)
-				{
-					feed.Stop();
-					feed.Initialize(builder.ToString());
-					feed.Start();
-				}
+				dataFeedImpl.Intialize(builder.ToString());
 				string path = ConfirugationPath;
 				TrySaveFixConnectionStringBuilder(path, builder);
 			}
@@ -149,7 +148,10 @@ namespace MT4LiquidityIndicator.Net.Fdk
 		{
 			try
 			{
-				DoStep();
+				if (IsInitialized)
+				{
+					DoStep();
+				}
 			}
 			catch (System.Exception)
 			{
@@ -227,8 +229,23 @@ namespace MT4LiquidityIndicator.Net.Fdk
 			}
 			m_event.Set();
 		}
+		private void OnTick(object sender, TickEventArgs e)
+		{
+			TickHandler handler = this.Tick;
+			if (null != handler)
+			{
+				handler(sender, e);
+			}
+		}
 		#endregion
+
+		#region events
+		internal event TickHandler Tick;
+		#endregion
+
 		#region properties
+		public bool IsInitialized { get; private set; }
+
 		public DataFeed Instance
 		{
 			get
@@ -258,7 +275,7 @@ namespace MT4LiquidityIndicator.Net.Fdk
 		{
 			DataFeed feed = m_feed;
 			m_feed = null;
-			if (null != feed)
+			if ((null != feed) && IsInitialized)
 			{
 				feed.Stop();
 				feed.Dispose();

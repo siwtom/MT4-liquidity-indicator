@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.m_indicator = new MT4LiquidityIndicator.Net.View.Chart();
 			this.SuspendLayout();
 			// 
@@ -36,14 +37,14 @@
 			this.m_indicator.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.m_indicator.Location = new System.Drawing.Point(0, 0);
 			this.m_indicator.Name = "m_indicator";
-			this.m_indicator.Size = new System.Drawing.Size(284, 262);
+			this.m_indicator.Size = new System.Drawing.Size(484, 348);
 			this.m_indicator.TabIndex = 0;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.ClientSize = new System.Drawing.Size(484, 348);
 			this.Controls.Add(this.m_indicator);
 			this.Name = "MainForm";
 			this.Text = "MT4LiquidityIndicator Launcher";

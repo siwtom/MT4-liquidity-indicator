@@ -23,8 +23,7 @@ namespace MT4LiquidityIndicator.Net.Fdk
 		{
 			get
 			{
-				DataFeed feed = m_impl.Instance;
-				bool result = (null != feed);
+				bool result = m_impl.IsInitialized;
 				return result;
 			}
 		}
@@ -32,19 +31,11 @@ namespace MT4LiquidityIndicator.Net.Fdk
 		{
 			add
 			{
-				DataFeed feed = m_impl.Instance;
-				if (null != feed)
-				{
-					feed.Tick += value;
-				}
+				m_impl.Tick += value;
 			}
 			remove
 			{
-				DataFeed feed = m_impl.Instance;
-				if (null != feed)
-				{
-					feed.Tick -= value;
-				}
+				m_impl.Tick -= value;
 			}
 		}
 		internal string Symbol

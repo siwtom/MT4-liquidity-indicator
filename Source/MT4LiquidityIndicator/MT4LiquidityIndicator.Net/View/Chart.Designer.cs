@@ -41,7 +41,6 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.m_help = new System.Windows.Forms.Label();
-			this.m_site = new System.Windows.Forms.LinkLabel();
 			this.m_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.m_spreads = new MT4LiquidityIndicator.Net.View.Prices();
 			saveAsCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,22 +130,13 @@
 			// m_help
 			// 
 			this.m_help.AutoSize = true;
+			this.m_help.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.m_help.Location = new System.Drawing.Point(16, 48);
 			this.m_help.Name = "m_help";
-			this.m_help.Size = new System.Drawing.Size(27, 13);
+			this.m_help.Size = new System.Drawing.Size(350, 40);
 			this.m_help.TabIndex = 2;
-			this.m_help.Text = "help";
-			// 
-			// m_site
-			// 
-			this.m_site.AutoSize = true;
-			this.m_site.Location = new System.Drawing.Point(16, 16);
-			this.m_site.Name = "m_site";
-			this.m_site.Size = new System.Drawing.Size(248, 13);
-			this.m_site.TabIndex = 3;
-			this.m_site.TabStop = true;
-			this.m_site.Text = "https://github.com/marmysh/MT4-liquidity-indicator";
-			this.m_site.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnLink);
+			this.m_help.Text = "Please select \"Connections settings\"\r\nin context menu and specify required inform" +
+    "ation";
 			// 
 			// m_saveFileDialog
 			// 
@@ -166,10 +156,9 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ContextMenuStrip = this.m_contextMenu;
 			this.Controls.Add(this.m_spreads);
-			this.Controls.Add(this.m_site);
 			this.Controls.Add(this.m_help);
 			this.Name = "Chart";
-			this.Size = new System.Drawing.Size(556, 315);
+			this.Size = new System.Drawing.Size(672, 318);
 			this.Click += new System.EventHandler(this.OnClick);
 			this.m_contextMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -183,7 +172,6 @@
 		private System.Windows.Forms.ContextMenuStrip m_contextMenu;
 		private MT4LiquidityIndicator.Net.View.Prices m_spreads;
 		private System.Windows.Forms.Label m_help;
-		private System.Windows.Forms.LinkLabel m_site;
 		private System.Windows.Forms.ToolStripMenuItem m_resetPricesWindowPositionToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
