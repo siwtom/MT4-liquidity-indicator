@@ -17,6 +17,9 @@
 ![MT4LiquidityIndicator](/Documentation/Images/MT4LiquidityIndicator.png)
 ![Allow Dll Import](/Documentation/Images/AllowDllImport.png)
 
+При первом запуске нужно выбрать из контекстного меню пункт "Connections settings" и ввести все необходимые параметры.
+![The first start](/Documentation/Images/TheFirstStart.png)
+![Connections Settings](/Documentation/Images/ConnectionsSettings.png)
 
 После успешной активации индикатора, внизу ценового графика появится окно, отображающее доступные цены Bid и Ask для заданных объемов в табличном и графическом виде. Обратившись к таблице ниже можно видеть, что, например, для 10 лотов средневзвешенная цена на покупку и продажу в определенный период времени равна 1.3658 и 1.36584 соответственно.  А взглянув на график можно оценить динамику изменения ликвидности.
  
