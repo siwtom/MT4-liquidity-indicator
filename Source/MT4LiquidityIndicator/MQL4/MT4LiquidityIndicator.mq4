@@ -1,4 +1,4 @@
-#property link "https://code.google.com/p/mt4-liquidity-indicator/"
+#property link "https://github.com/marmysh/MT4-liquidity-indicator"
 #property description "MT4 Liquidity Indicator"
 #property description "Authors:"
 #property description "\tDmitry Kogan email: disayev@hotmail.com"

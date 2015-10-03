@@ -24,7 +24,7 @@ namespace MT4LiquidityIndicator.Net.View
 
 			m_symbol = symbol;
 			m_duration = duration;
-			m_dateTime.Value = DateTime.UtcNow;
+			m_dateTime.Value = m_lastUsingDateTime ?? DateTime.UtcNow;
 		}
 
 		#endregion
@@ -37,6 +37,7 @@ namespace MT4LiquidityIndicator.Net.View
 		{
 			DateTime value = m_dateTime.Value;
 			m_timestamp = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, value.Second, DateTimeKind.Utc);
+			m_lastUsingDateTime = m_timestamp;
 
 			try
 			{
@@ -184,6 +185,7 @@ namespace MT4LiquidityIndicator.Net.View
 		#region members
 		private DateTime m_timestamp;
 		private Thread m_thread;
+		private static DateTime? m_lastUsingDateTime;
 		#endregion
 	}
 }
