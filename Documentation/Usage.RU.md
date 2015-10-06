@@ -20,6 +20,7 @@
 При первом запуске нужно выбрать из контекстного меню пункт "Connections settings" и ввести все необходимые параметры.
 ![The first start](/Documentation/Images/TheFirstStart.png)
 ![Connections Settings](/Documentation/Images/ConnectionsSettings.png)
+
 Для этого скачайте и установите [OCTL2](http://fxopen.com) плагин, затем откройте DefaultSettings.SoftFX.OneClickTrading.NET.dll.xml файл и выберите подходящие для Вас настройки
 ![OCTL2](/Documentation/Images/OCTL2.png)
 
