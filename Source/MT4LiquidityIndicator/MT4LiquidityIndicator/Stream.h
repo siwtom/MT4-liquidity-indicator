@@ -1,3 +1,7 @@
+//==============================================================
+// Copyright (c) 2015 by Viktar Marmysh mailto:marmysh@gmail.com
+//==============================================================
+
 #pragma once
 
 typedef void (*Text2Log)(const string& message);

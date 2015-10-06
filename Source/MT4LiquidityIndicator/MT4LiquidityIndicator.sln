@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MT4LiquidityIndicator", "MT4LiquidityIndicator\MT4LiquidityIndicator.vcxproj", "{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}"
 EndProject
@@ -32,41 +32,25 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|Win32 = Debug|Win32
 		Release|Any CPU = Release|Any CPU
-		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Debug|Win32.Build.0 = Debug|Win32
+		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Debug|Any CPU.Build.0 = Debug|Win32
 		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Release|Any CPU.ActiveCfg = Release|Win32
-		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Release|Win32.ActiveCfg = Release|Win32
-		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Release|Win32.Build.0 = Release|Win32
+		{4BDC0F3B-B8E4-471B-B649-A136CDF0D99B}.Release|Any CPU.Build.0 = Release|Win32
 		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Debug|Win32.Build.0 = Debug|Any CPU
 		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Release|Win32.ActiveCfg = Release|Any CPU
-		{2D2F46E4-9924-4300-94D7-992B232DCBA5}.Release|Win32.Build.0 = Release|Any CPU
 		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Debug|Win32.Build.0 = Debug|Any CPU
 		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Release|Win32.ActiveCfg = Release|Any CPU
-		{D1EE162C-4DD1-4852-BA65-89E494B1FDC8}.Release|Win32.Build.0 = Release|Any CPU
 		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Debug|Win32.Build.0 = Debug|Any CPU
 		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Release|Win32.ActiveCfg = Release|Any CPU
-		{2CB0F103-C89C-4BB6-8593-1C7CE3121206}.Release|Win32.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

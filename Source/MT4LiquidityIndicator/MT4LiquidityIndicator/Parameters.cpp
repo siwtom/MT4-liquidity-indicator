@@ -1,3 +1,7 @@
+//==============================================================
+// Copyright (c) 2015 by Viktar Marmysh mailto:marmysh@gmail.com
+//==============================================================
+
 #include "stdafx.h"
 #include "DllMain.h"
 #include "Parameters.h"
