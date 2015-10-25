@@ -56,7 +56,7 @@ where:
 * **Update interval** specifies a time interval in ms between a chart redrawing;
 * **Lines** option allows specifying a set of price lines. For every price line user can assign a required liquidity size and color.
 
-![Line Settings Collection Editor](/Documentation/Images/LineSettingsCollectionEditor.png)
+![Line Settings Collection Editor](/Documentation/Images/LineSettingsCollectionEditor.EN.png)
 
 Usage in historical mode
 ------------------------------------------
