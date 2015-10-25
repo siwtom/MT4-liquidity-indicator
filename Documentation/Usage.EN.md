@@ -24,7 +24,7 @@ Fort the first start on the context menu click "Connections settings" and fill r
 To do this download and install [OCTL2](http://fxopen.com) plugin then open DefaultSettings.SoftFX.OneClickTrading.NET.dll.xml file and choose an appropriate for you settings.
 ![OCTL2](/Documentation/Images/OCTL2.png)
 
-After successful activation of the indicator, you will show an additional window in the lower part of the chart. The window displays available bid and ask prices for the specified sizes in tabular and graphical modes. For example, the table on an image below shows that volume weight average prices for buying and selling equal to 1.29446 and 1.29443 correspondingly. The prices chart show dynamics of available liquidity.
+After successful activation of the indicator, you will show an additional window in the lower part of the chart. The window displays available bid and ask prices for the specified sizes in tabular and graphical modes. For example, the table on an image below shows that volume weight average prices for buying and selling 10 lots equal to 1.29446 and 1.29443 correspondingly. The prices chart show dynamics of available liquidity.
  
  ![Current Quotes](/Documentation/Images/CurrentQuotes.png)
  
@@ -53,7 +53,7 @@ where:
   - **Speed** mode does not use antialiasing for lines smoothing, this mode is preferable for slow computers. 
 * **Show Grid** enables/disables grid on the chart;
 * **Type** specifies type of price lines;
-* **Update interval**specifies a time interval in ms between a chart redrawing;
+* **Update interval** specifies a time interval in ms between a chart redrawing;
 * **Lines** option allows specifying a set of price lines. For every price line user can assign a required liquidity size and color.
 
 ![Line Settings Collection Editor](/Documentation/Images/LineSettingsCollectionEditor.png)
